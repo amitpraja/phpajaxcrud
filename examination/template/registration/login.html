@@ -1,0 +1,25 @@
+{% extends  'testapp/basic.html'%}
+{% load static%}
+{% block title%}Login{% endblock title%}
+
+
+
+{% block main_content%}
+<section class="container" style="margin-bottom:7.9%;">
+    <div class="row justify-content-around">
+      <div class="col-md-5" style="margin-left:390px;">
+         <h3 style="color:white;"><b>Login</b></h3>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+      <div class="col-md-4" style="margin-left:390px;">
+         <form class=""  method="post" style="background-color:white;">
+           {% csrf_token%}
+           {{form.as_p}}
+           <small class="text-danger">{{form.errors|striptags}}</small>
+           <input type="submit" name="" value="Login" class="btn btn-success " >
+         </form>
+      </div>
+    </div>
+</section>
+{% endblock main_content%}

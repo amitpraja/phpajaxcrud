@@ -1,0 +1,112 @@
+<!doctype html>
+{% load static%}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title%}{% endblock title%}</title>
+    <style media="screen">
+        .containter{
+            background: rgba(0,0,0,0.3);
+            margin-left: 5%;
+            margin-right: 5%;
+            padding-left: 50px;
+            padding-right: 50px;
+            border-radius: 20px;
+            margin-top: 30px;
+
+        }
+        .jumbotron{
+             background:transparent;
+
+        }
+
+    </style>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/style2.css'%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background-color:black;">
+    {% include 'testapp/navbar.html'%}
+    <div class="jumbotron" style="background:transparent;color:white;">
+      <div class="containter" >
+        <div class="row">
+          <form class="" autocomplete="off" onsubmit="return SaveAns() "action="/calculate/" method="POST">
+            {% csrf_token%}
+            <h3  style="text-align:center;">Course:   <span style="color:blue;">{{course.course_name}}</span></h3><br>
+                   {% for i in question%}
+                      <h3 style="color:red;">{{forloop.counter}}.   {{i.question}}</h3><h4 style="text-align:right;">{{i.marks}}Marks</h4>
+
+                      <div class="">
+                        <input type="radio" name="{{forloop.counter}}"  value="option1">
+                        <label >{{i.option1}}</label>
+                      </div>
+
+                      <div class="">
+                         <input type="radio" name="{{forloop.counter}}"  value="option2">
+                         <label >{{i.option2}}</label>
+                      </div>
+
+                      <div class="">
+                         <input type="radio" name="{{forloop.counter}}"  value="option3">
+                         <label >{{i.option3}}</label>
+                      </div>
+
+                      <div class="">
+                         <input type="radio" name="{{forloop.counter}}"  value="option4">
+                         <label >{{i.option4}}</label>
+                      </div>
+                       <br>
+                       <hr>
+
+
+                    {% endfor%}
+                    
+                    {% csrf_token %}
+                    <input type="submit" name="" value="Submit Answers" class="btn btn-success btn-lg">
+          </form>
+        </div>
+        <script>
+
+               function SaveAns(){
+
+                 var element = document.getElementsByTagName("input");
+                 for (var i = 0; i < element.length; i++){
+                   console.log(i);
+                   if (element[i].type ="radio"){
+                      if (element[i].checked){
+                         setCookie(element[i].name,element[i].value ,3)
+
+                    }
+                }
+             }
+          }
+          function setCookie(cname,cvalue,exdays){
+            const d1 = new Date();
+            d1.setTime(d1.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d1.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+          }
+
+        </script>
+      </div>
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>

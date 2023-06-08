@@ -1,0 +1,75 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  background-image: url('/static/image/tag.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display:block;
+}
+h1{
+  color: white;
+}
+
+nav{
+      border: none;
+      margin-top: 0px;
+      padding-bottom: 2px;
+}
+.navbar-header{
+  margin-left: 100px;
+  font-family: sans-serif;
+}
+.dropdown{
+  margin-right: 50px;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+}
+
+.navbar-default navbar-brand{
+  font-size: 30px;
+}
+
+.container {
+  margin-top: 150px;
+  font-family: lucida;
+  color: black;
+  font-weight: bold;
+  align-items: center;
+
+}
+#foot{
+  background-color: white;
+  color: black;
+  margin-bottom:  20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+#foot p{
+  color: black;
+}
+
+#Signup{
+  font-size: 25px;
+}
+.col-sm-2{
+  align-items: center;
+  text-align: center;
+
+}
+form{
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.col-sm-5{
+  margin-left: 350px;
+}
+.text-danger{
+  color: #a94442;
+}

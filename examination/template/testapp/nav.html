@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+{% load static%}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/style2.css'%}">
+    <style media="screen">
+       #list li a{
+
+       }
+    </style>
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default" style="background:0px 20px rgba(0,0,0,0.2);border:none;box-shadow: 0px 3px rgba(0, 0, 0, 0.3);padding-bottom:inherit;margin:0px;">
+      <div class="navbar-header"style="color:white;">
+        <a href="#" class="navbar-brand" style="color:white;">Amit<span style="color
+        :purple;">Code.</span></a>
+      </div>
+      <div class="dropdown">
+        <ul class="nav navbar-nav navbar-right" style="font-size:small;">
+          <li><a href="/">Home</a></li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exam <span class="caret"></span></a>
+
+              <ul id="list" class="dropdown-menu">
+                {% for i in corse%}
+                <li><a href="/{{i.id}}/rules">{{i.course_name}}</a></li>
+                <!-- <li><a href="/{{corse.id}}/rules">{{corse.course_name}}</a></li> -->
+                <!-- <li><a href="/rules">Html  Exam</a></li> -->
+                <!-- <li><a href="/rules">Django  Exam</a></li> -->
+              {% endfor%}
+              </ul>
+
+          </li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apptitude<span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="#">Problem Solving</a></li>
+               <li><a href="#">Arithmetic</a></li>
+               <li><a href="#">Algebra and Higher Mathematics</a></li>
+               <li><a href="#">Geometry and Mensuration</a></li>
+             </ul>
+          </li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Study<span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="">formulas</a></li>
+               <li><a href="">Notes</a></li>
+             </ul>
+          </li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Certification<span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="">Front-end Certification</a></li>
+               <li><a href="">Python Certification</a></li>
+               <li><a href="">Full-Stack Certification</a></li>
+               <li><a href="">Java Certification</a></li>
+               <li><a href="">Data Science Certification</a></li>
+             </ul>
+          </li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="margin-right:50px;">Contact<span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="">About</a></li>
+               <li><a href="">Contact Us</a></li>
+             </ul>
+          </li>
+              {% if request.user.is_authenticated %}
+                 <li><a href="" class="btn btn-success" style="color:white;margin-right:10px;padding-bottom:6px;padding-top: 6px;margin-top:10px">{{request.user}}</a></li>
+                 <li><a href="/logout" class="btn btn-danger" style="color:white;padding-bottom:6px;padding-top: 6px;margin-top:10px">Logout</a></li>
+              {% else%}
+                 <li><a href="/login" class="btn btn-success" style="color:white;margin-right:10px;padding-bottom:6px;padding-top: 6px;margin-top:10px; border-radius:25px;">Login</a></li>
+                 <li><a href="/signup" class="btn btn-danger" style="color:white;padding-bottom:6px;padding-top: 6px;margin-top:10px; border-radius:25px;">Sign Up</a></li>
+              {% endif%}
+        </ul>
+      </div>
+    </nav>
+
+  </body>
+</html>
